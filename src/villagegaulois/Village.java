@@ -18,7 +18,7 @@ public class Village {
 		private Etal[] etal;
 		private int nbEtal;
 		
-		
+		//uwu//
 		public Marche(int nbEtalMax) {
 			etal= new Etal[nbEtalMax];
 			for (int i=0; i<nbEtalMax;i++) {
@@ -70,7 +70,7 @@ public class Village {
 					vide++;
 					}
 				}
-			return ("Il reste " + vide + "étals non utilisés dans le marché.\n");
+			return ("Il reste " + vide + "ï¿½tals non utilisï¿½s dans le marchï¿½.\n");
 		}
 			
 		
