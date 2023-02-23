@@ -8,18 +8,22 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
-
-	public Village(String nom, int nbVillageoisMaximum,Etal[] marche) {
+	private int nbEtalMax;
+	private Etal[] etal;
+	
+	
+	public Village(String nom, int nbVillageoisMaximum,int nbEtalMax) {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
+		etal=new Etal[nbEtalMax];
 	}
 	
-	public class Marche {
+	private static class Marche {
 		private Etal[] etal;
 		private int nbEtal;
 		
 		//uwu//
-		public Marche(int nbEtalMax) {
+		private Marche(int nbEtalMax) {
 			etal= new Etal[nbEtalMax];
 			for (int i=0; i<nbEtalMax;i++) {
 				etal[i]= new Etal();}
@@ -119,4 +123,21 @@ public class Village {
 		}
 		return chaine.toString();
 	}
+	public String installerVendeur(Gaulois vendeur, String produit,int nbProduit) {
+		StringBuilder chaine = new StringBuilder();
+		chaine.append(vendeur.getNom()+"cherche un endroit pour vendre"+nbProduit+produit+".\n");
+		int i=trouverEtalLibre();
+		utiliserEtal(i,vendeur,produit,nbProduit);
+		chaine.append("Le vendeur"+vendeur.getNom()+"vend des"+produit+"à l'étal n°"+i);
+		return(chaine.toString());
+	}
+	
+	public String rechercherVendeursProduit(String produit) {
+		StringBuilder chaine = new StringBuilder();
+		chaine.append("Les vendeurs qui proposent des"+produit+"sont:\n");
+		tab=trouverEtals(produit);
+		return(chaine.toString());
+	}
+	
+	
 }
