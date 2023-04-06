@@ -113,10 +113,12 @@ public class Village {
 		}
 		return null;
 	}
-
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
 		StringBuilder chaine = new StringBuilder();
+		try {if (chef==null) {throw new VillageSansChefException("pas de chef dans le village");}}catch(NullPointerException e) {e.printStackTrace();}
+
 		if (nbVillageois < 1) {
+			
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
 					+ chef.getNom() + ".\n");
 		} else {
